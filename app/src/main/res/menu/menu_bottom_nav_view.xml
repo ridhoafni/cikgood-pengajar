@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_paud"
+        android:enabled="true"
+        android:title="PAUD"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_sd"
+        android:enabled="true"
+        android:title="SD"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_star"
+        android:enabled="true"
+        android:title="SMP"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_sma"
+        android:enabled="true"
+        android:title="SMA"
+        app:showAsAction="ifRoom" />
+</menu>

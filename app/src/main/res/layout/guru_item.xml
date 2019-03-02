@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="4dp"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    card_view:cardCornerRadius="4dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="2dp">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:id="@+id/img_item_photo"
+            android:layout_marginBottom="4dp"
+            tools:src="@tools:sample/avatars"/>
+        <TextView
+            android:layout_toRightOf="@id/img_item_photo"
+            android:layout_toEndOf="@id/img_item_photo"
+            android:id="@+id/tv_item_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="Nama"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+            android:layout_below="@+id/tv_item_name"
+            android:layout_toRightOf="@id/img_item_photo"
+            android:layout_toEndOf="@id/img_item_photo"
+            android:id="@+id/tv_item_pendidikan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:text="Pendidikan"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"/>
+
+        <TableLayout
+            android:id="@+id/table_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_item_pendidikan"
+            android:layout_toRightOf="@id/img_item_photo"
+            android:layout_toEndOf="@id/img_item_photo">
+            <TableRow>
+                <RatingBar
+                    android:layout_below="@id/tv_item_pendidikan"
+                    android:layout_toRightOf="@id/img_item_photo"
+                    android:layout_toEndOf="@id/img_item_photo"
+                    android:id="@+id/ratingBar"
+                    style="?ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:isIndicator="true"
+                    android:max="5"
+                    android:numStars="5"
+                    android:rating="4.2"
+                    android:stepSize=".1" />
+
+                <TextView
+                    android:id="@+id/tv_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_toEndOf="@+id/ratingBar"
+                    android:layout_toRightOf="@id/ratingBar"
+                    android:text="4.2" />
+            </TableRow>
+        </TableLayout>
+
+
+        <TextView
+            android:layout_below="@id/table_rating"
+            android:layout_toRightOf="@id/img_item_photo"
+            android:layout_toEndOf="@id/img_item_photo"
+            android:id="@+id/tv_item_bio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Biodata"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"/>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

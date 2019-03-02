@@ -1,0 +1,218 @@
+<LinearLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/swipe_pengalaman"
+        tools:context="ui.fragment.PengalamanFragment">
+
+        <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/LinearLayout"
+                android:background="@color/lightgray"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:id="@+id/tv_bahan_ajar_judul"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/activity_horizontal_margin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lengkapi_bahan_ajar_judul"/>
+
+                    <TextView
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin"
+                        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                        android:layout_below="@+id/tv_bahan_ajar_judul"
+                        android:id="@+id/tv_pengalaman_isi"
+                        android:textSize="12sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lengkapi_bahan_ajar_isi"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_mengajar"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TableLayout
+                        android:id="@+id/tl_mengajar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TableRow>
+                            <TextView
+                                android:id="@+id/judul"
+                                android:textStyle="bold"
+                                android:layout_margin="@dimen/activity_horizontal_margin"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:text="@string/lokasi_mengajar"/>
+
+                            <Button
+                                android:id="@+id/btn_lokasi_mengajar"
+                                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                                android:layout_width="130dp"
+                                android:layout_height="30dp"
+                                android:text="@string/tambah_baru"
+                                android:textSize="18sp"
+                                style="@style/ButtonBorder.Accent"/>
+                        </TableRow>
+                    </TableLayout>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/rl_mengajar2"
+                    android:orientation="vertical"
+                    android:background="@color/lightgray"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyclerViewLokasi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:listitem="@layout/form_mengajar"/>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TableRow>
+                            <TextView
+                                android:textStyle="bold"
+                                android:layout_margin="@dimen/activity_horizontal_margin"
+                                android:layout_height="wrap_content"
+                                android:layout_width="160dp"
+                                android:text="@string/mata_pelajaran"/>
+
+                            <Button
+                                android:id="@+id/btn_matapel"
+                                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                                android:layout_width="130dp"
+                                android:layout_height="30dp"
+                                android:text="@string/tambah_baru"
+                                android:textSize="18sp"
+                                style="@style/ButtonBorder.Accent"/>
+
+
+                        </TableRow>
+                    </TableLayout>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/rl_kerja"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyclerViewKerja"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:listitem="@layout/form_mengajar"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rl_pendidikan"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyclerViewPendidikan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:listitem="@layout/form_mengajar"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/rl_dokumen"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyclerViewDokumen"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:listitem="@layout/form_mengajar"/>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:background="@color/lightgray"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_nb"
+                        android:textStyle="bold"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/NB"/>
+
+                    <TextView
+                        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:textStyle="italic"
+                        android:layout_below="@+id/tv_nb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/isi_nb"/>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/konten_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/white"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TableRow>
+
+            <TextView
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:id="@+id/tv_pengalaman_mengajar"
+                android:layout_height="wrap_content"
+                android:layout_width="210dp"
+                tools:text=""/>
+
+            <Button
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:id="@+id/btn_edit_mengajar"
+                android:layout_height="19dp"
+                android:layout_width="19dp"
+                android:background="@drawable/ic_edit_black_24dp"/>
+            <TextView
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:id="@+id/garis"
+                android:textSize="14sp"
+                android:text="|"/>
+            <Button
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:id="@+id/btn_hapus_mengajar"
+                android:layout_height="19dp"
+                android:layout_width="19dp"
+                android:background="@drawable/ic_delete_black_24dp"/>
+
+        </TableRow>
+        <View
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightgray"/>
+    </TableLayout>
+</LinearLayout>
