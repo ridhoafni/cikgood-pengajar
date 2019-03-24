@@ -240,7 +240,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         String provinsi_domisili = response.body().getData().getProvinsiDomisili();
                         String kota_domisili = response.body().getData().getKotaDomisili();
                         String kecamatan_domisili = response.body().getData().getKecamatanDomisili();
-                        String alamat_domisili = response.body().getData().getAlamatKtp();
+                        String alamat_domisili = response.body().getData().getAlamatDomisili();
                         String biodata = response.body().getData().getBiodata();
                         String status = response.body().getData().getStatus();
                         String create_at = response.body().getData().getCreatedAt();

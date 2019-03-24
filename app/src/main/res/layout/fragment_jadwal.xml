@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/swipe_bahan_ajar"
+        android:id="@+id/swipe_jadwal"
         tools:context="ui.fragment.PengalamanFragment">
 
         <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -30,23 +30,23 @@
 
                     <TextView
                         android:layout_margin="@dimen/activity_horizontal_margin"
-                        android:id="@+id/tv_bahan_ajar_judul"
+                        android:id="@+id/tv_jadwal_judul"
                         android:textStyle="bold"
                         android:textSize="@dimen/activity_horizontal_margin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/lengkapi_bahan_ajar_judul"/>
+                        android:text="@string/lengkapi_jadwal_judul"/>
 
                     <TextView
                         android:layout_marginLeft="@dimen/activity_horizontal_margin"
                         android:layout_marginRight="@dimen/activity_horizontal_margin"
                         android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                        android:layout_below="@+id/tv_bahan_ajar_judul"
-                        android:id="@+id/tv_pengalaman_isi"
+                        android:layout_below="@+id/tv_jadwal_judul"
+                        android:id="@+id/tv_jadwal_isi"
                         android:textSize="12sp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/lengkapi_bahan_ajar_isi"/>
+                        android:text="@string/jadwal_isi"/>
 
                 </RelativeLayout>
 
@@ -63,15 +63,15 @@
                         android:layout_height="wrap_content">
                         <TableRow>
                             <TextView
-                                android:id="@+id/judul"
+                                android:id="@+id/jadwal"
                                 android:textStyle="bold"
                                 android:layout_margin="@dimen/activity_horizontal_margin"
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
-                                android:text="@string/lokasi_mengajar"/>
+                                android:text="@string/jadwal"/>
 
                             <Button
-                                android:id="@+id/btn_lokasi_mengajar"
+                                android:id="@+id/btn_jadwal"
                                 android:layout_marginTop="@dimen/activity_horizontal_margin"
                                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
@@ -94,45 +94,12 @@
                     android:layout_height="wrap_content">
 
                     <android.support.v7.widget.RecyclerView
-                        android:id="@+id/recyclerViewLokasi"
+                        android:id="@+id/recyclerViewJadwal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:listitem="@layout/form_mengajar"/>
                 </LinearLayout>
 
-                <RelativeLayout
-                    android:layout_marginTop="@dimen/activity_horizontal_margin"
-                    android:background="@color/white"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TableLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TableRow>
-                            <TextView
-                                android:textStyle="bold"
-                                android:layout_margin="@dimen/activity_horizontal_margin"
-                                android:layout_height="wrap_content"
-                                android:layout_width="160dp"
-                                android:text="@string/mata_pelajaran"/>
-
-                            <Button
-                                android:id="@+id/btn_matapel"
-                                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                                android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                                android:layout_width="130dp"
-                                android:layout_height="30dp"
-                                android:text="@string/tambah_baru"
-                                android:textSize="18sp"
-                                style="@style/ButtonBorder.Accent"/>
-
-
-                        </TableRow>
-                    </TableLayout>
-                </RelativeLayout>
 
                 <LinearLayout
                     android:id="@+id/rl_kerja"

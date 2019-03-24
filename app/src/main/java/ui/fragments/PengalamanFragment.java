@@ -570,6 +570,7 @@ public class PengalamanFragment extends Fragment {
         adapterJI.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFormJenisDokumen.setPrompt("Pilih Jenis Dokumen");
         spinnerFormJenisDokumen.setAdapter( adapterJI);
+
     }
 
     private void initDataPengalamanMengajar() {
@@ -644,6 +645,7 @@ public class PengalamanFragment extends Fragment {
     }
 
     private void initDataPengalamanKerja() {
+
         etFormKerjaGuruId      = dialogView.findViewById(R.id.etFormKerjaGuruId);
         etFormKerjaJabatan     = dialogView.findViewById(R.id.etFormKerjaJabatan);
         etFormKerjaPerusahaan  = dialogView.findViewById(R.id.etFormKerjaPerusahaan);

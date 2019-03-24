@@ -1,10 +1,14 @@
 package ui.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 //import android.app.Fragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -15,6 +19,8 @@ import com.smarteist.autoimageslider.SliderLayout;
 import com.smarteist.autoimageslider.SliderView;
 
 import org.jetbrains.annotations.Nullable;
+
+import ui.activities.SettingsActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -78,5 +84,23 @@ public class HomeFragment extends Fragment {
             sliderLayout.addSliderView(sliderView);
         }
     }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
+        inflater.inflate(R.menu.menu_navbar, menu);
+    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item){
+//        switch (item.getItemId()){
+//            case R.id.action_notifs:
+//                Intent i;
+//                i = new Intent(getActivity(), SettingsActivity.class);
+//                startActivity(i);
+//
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
+
 
 }

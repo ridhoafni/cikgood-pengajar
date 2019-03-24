@@ -10,9 +10,11 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.util.Base64;
 import android.view.LayoutInflater;
@@ -28,11 +30,17 @@ import android.widget.Toast;
 
 import com.example.anonymous.CikgoodPengajar.R;
 import com.example.anonymous.CikgoodPengajar.config.ServerConfig;
+import com.example.anonymous.CikgoodPengajar.models.GuruIdentitas;
+import com.example.anonymous.CikgoodPengajar.models.GuruProfil;
 import com.example.anonymous.CikgoodPengajar.models.Matpel;
+import com.example.anonymous.CikgoodPengajar.network.ApiServices;
+import com.example.anonymous.CikgoodPengajar.response.ResponseIdentitas;
 import com.example.anonymous.CikgoodPengajar.response.ResponseMatpel;
+import com.example.anonymous.CikgoodPengajar.rests.ApiClient;
 import com.example.anonymous.CikgoodPengajar.rests.ApiInterface;
 import com.example.anonymous.CikgoodPengajar.utils.SessionManager;
 import com.example.anonymous.CikgoodPengajar.utils.UtilsApi;
+import com.squareup.picasso.Picasso;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -111,8 +119,9 @@ public class IdentitasFragment extends Fragment {
 
     ImageView ImgPaud, ImgSd, ImgSmp, ImgSma;
     private Context mContext;
-    EditText etGuruId, etKtp, etNpwp, etNomorRekening, etNamaPemilikRekening;
+    EditText etGuruId, etKtp, etNpwp, etNamaBank, etNomorRekening, etNamaPemilikRekening;
     LayoutInflater inflater;
+    SwipeRefreshLayout swipeRefreshLayout;
     View dialogView;
     AlertDialog.Builder dialog;
     Spinner spinnerNamaBank;
@@ -121,6 +130,7 @@ public class IdentitasFragment extends Fragment {
     ApiInterface mApiInterface;
     ProgressDialog loading;
     SessionManager sessionManager;
+    ApiInterface apiServices;
 
     String[] array_nama_bank        = {"Bank Central Asia Tbk", "Bank Mandiri Tbk", "Bank Negara Indonesia Tbk",
     "Bank Rakyat Indonesia Tbk", "Bank Muamalat Indonesia Tbk", "Bank Mega Tbk", "Bank CIMB Niaga Tbk", "Bank NISP Tbk",
@@ -170,6 +180,12 @@ public class IdentitasFragment extends Fragment {
 
         ShowSelectedImageNpwp = (ImageView)view.findViewById(R.id.imageViewNpwp);
 
+        swipeRefreshLayout = view.findViewById(R.id.swipe_identitas);
+
+        swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent, R.color.colorAccent);
+
+        refresh();
+
         etGuruId               = (EditText)view.findViewById(R.id.etFormGuruIdentitas);
         etKtp                  = (EditText)view.findViewById(R.id.etFormNomorKtp);
         etNpwp                 = (EditText)view.findViewById(R.id.etFormNomorNPWP);
@@ -200,9 +216,18 @@ public class IdentitasFragment extends Fragment {
 
         getGuruId = Integer.parseInt(sessionManager.getGuruProfile().get("id_guru"));
 
+        etKtp.setText(sessionManager.getGuruProfile().get("nomor_ktp"));
+        etNpwp.setText(sessionManager.getGuruProfile().get("npwp"));
+        etNomorRekening.setText(sessionManager.getGuruProfile().get("nomor_rekening"));
+        etNamaPemilikRekening.setText(sessionManager.getGuruProfile().get("nama_pemilik_rekening"));
+        spinnerNamaBank.setTag(sessionManager.getGuruProfile().get("nama_bank"));
+
         byteArrayOutputStream = new ByteArrayOutputStream();
 
         mApiInterface = UtilsApi.getAPIService();
+
+        apiServices  = ApiClient.getClient(ServerConfig.API_ENDPOINT).create(ApiInterface.class);
+
 
         GetImageFromGalleryButtonKtp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -245,6 +270,53 @@ public class IdentitasFragment extends Fragment {
                 nomor_rekening  = etNomorRekening.getText().toString();
                 nama_pemilik_bank = etNamaPemilikRekening.getText().toString();
                 UploadImageToServer();
+
+            }
+        });
+
+    }
+
+    private void refresh() {
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipeRefreshLayout.setRefreshing(false);
+                        loadDataIdentitasGuruId();
+                    }
+                }, 3000);
+            }
+        });
+    }
+
+    private void loadDataIdentitasGuruId() {
+        int id_guru = Integer.parseInt(sessionManager.getGuruProfile().get("id_guru"));
+        apiServices.getDataIdentitasByGuruId(id_guru).enqueue(new Callback<ResponseIdentitas>() {
+            @Override
+            public void onResponse(Call<ResponseIdentitas> call, Response<ResponseIdentitas> response) {
+                System.out.println("Responnya :"+response);
+
+                if (response.isSuccessful()){
+                        ArrayList<GuruIdentitas> guruIdentitas = new ArrayList<>();
+                        guruIdentitas.add(response.body().getMaster());
+                        GuruIdentitas guruIdentitas1 = guruIdentitas.get(0);
+                        etKtp.setText(guruIdentitas1.getNomorKtp());
+                        Picasso.get().load(ServerConfig.GURU_IDENTITAS_PATH+guruIdentitas1.getPhotoKtp()).into(ShowSelectedImageKtp);
+                        etNpwp.setText(guruIdentitas1.getNpwp());
+                        Picasso.get().load(ServerConfig.GURU_IDENTITAS_PATH+guruIdentitas1.getPhotoNpwp()).into(ShowSelectedImageNpwp);
+                        spinnerNamaBank.setTag(guruIdentitas1.getNamaBank());
+                        etNamaPemilikRekening.setText(guruIdentitas1.getNamaPemilikRekening());
+                        etNomorRekening.setText(guruIdentitas1.getNomorRekening());
+
+                        System.out.println("KTP :"+guruIdentitas1.getNomorKtp());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseIdentitas> call, Throwable t) {
 
             }
         });
@@ -327,6 +399,8 @@ public class IdentitasFragment extends Fragment {
                 HashMapParams.put(NAMA_PEMILIK_REKENING, nama_pemilik_bank);
 
                 String FinalData = imageProcessClass.ImageHttpRequest(ServerUploadPath, HashMapParams);
+
+                loadDataIdentitasGuruId();
 
                 return FinalData;
             }

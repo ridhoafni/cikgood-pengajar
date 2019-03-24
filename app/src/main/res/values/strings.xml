@@ -143,4 +143,18 @@
     <string name="provinsi">Provinsi</string>
     <string name="kota">Kota</string>
     <string name="kec">Kecamatan</string>
+    <string name="matpel">Pilih Mata Pelajaran</string>
+    <string name="tarif">Tarif per jam (dalam rupiah)</string>
+    <string name="lengkapi_jadwal_judul">Lengkapi Jadwal Mengajar Anda</string>
+    <string name="jadwal_isi">Pastikan Anda mengisi jadwal kosong Anda untuk digunakan mengajar di Ruangguru. Kami akan memilih guru berdasarkan jadwal yang diisikan di halaman ini.
+
+</string>
+    <string name="jadwal">Jadwal Mengajar</string>
+    <string name="judul_jadwal">Jadwal Mata Pelajaran</string>
+    <string name="hari">Pilih Hari</string>
+    <string name="jam">Pilih Jam</string>
+    <string name="pagi">Pagi (09:00 - 14:00)</string>
+    <string name="siang">Siang (14:00 - 18:00)</string>
+    <string name="malam">Malam (18:00 - 22:00)</string>
+    <string name="chat">Chat</string>
 </resources>

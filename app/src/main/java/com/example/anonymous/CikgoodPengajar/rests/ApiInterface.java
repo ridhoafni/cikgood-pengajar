@@ -1,19 +1,26 @@
 package com.example.anonymous.CikgoodPengajar.rests;
 
 import com.example.anonymous.CikgoodPengajar.response.ResponGuruDetail;
+import com.example.anonymous.CikgoodPengajar.response.ResponseCreateBahanAjarMatpel;
 import com.example.anonymous.CikgoodPengajar.response.ResponseCreateGuru;
+import com.example.anonymous.CikgoodPengajar.response.ResponseCreateJadwal;
 import com.example.anonymous.CikgoodPengajar.response.ResponseCreatePengalamanKerja;
+import com.example.anonymous.CikgoodPengajar.response.ResponseDaftarBahanAjarJoin;
+import com.example.anonymous.CikgoodPengajar.response.ResponseDataMatpel;
 import com.example.anonymous.CikgoodPengajar.response.ResponseDataPengalamanMengajar;
 import com.example.anonymous.CikgoodPengajar.response.ResponseDeleteDokumen;
 import com.example.anonymous.CikgoodPengajar.response.ResponseDeletePengalamanMengajar;
 import com.example.anonymous.CikgoodPengajar.response.ResponseDeleteRiwayatPendidikan;
 import com.example.anonymous.CikgoodPengajar.response.ResponseFindLokasiById;
+import com.example.anonymous.CikgoodPengajar.response.ResponseGuruJadwal;
 import com.example.anonymous.CikgoodPengajar.response.ResponseGuruProfil;
+import com.example.anonymous.CikgoodPengajar.response.ResponseIdentitas;
 import com.example.anonymous.CikgoodPengajar.response.ResponseKecamatan;
 import com.example.anonymous.CikgoodPengajar.response.ResponseKota;
 import com.example.anonymous.CikgoodPengajar.response.ResponseListDokumen;
 import com.example.anonymous.CikgoodPengajar.response.ResponseLogin;
 import com.example.anonymous.CikgoodPengajar.response.ResponseLokasi;
+import com.example.anonymous.CikgoodPengajar.response.ResponseMasterMatpel;
 import com.example.anonymous.CikgoodPengajar.response.ResponseMatpel;
 import com.example.anonymous.CikgoodPengajar.response.ResponseCreateMurid;
 import com.example.anonymous.CikgoodPengajar.response.ResponsePengalamanKerja;
@@ -138,9 +145,20 @@ public interface ApiInterface {
     @GET("lokasi/find-by-id")
     Call<ResponseFindLokasiById> getDataLokasiByGuruId(@Query("id") int guru_id);
 
+    @GET("data-matpel/find-by-id")
+    Call<ResponseDataMatpel> getDataMatpelByMatpelId(@Query("id") int matpel);
+
     @DELETE("lokasi/delete")
     Call<ResponseLokasi> deleteLokasi(@Query("id") int id_bahan_ajar_lokasi);
 
+    @GET("master-matpel/find-all")
+    Call<ResponseMasterMatpel> masterMatpelFindAll();
+
+    @FormUrlEncoded
+    @POST("bahan-ajar-matpel/register")
+    Call<ResponseCreateBahanAjarMatpel> createBahanAjarMatpel(@Field("guru_id") int guru_id,
+                                                              @Field("matpel_id") String matpel_id,
+                                                              @Field("tarif") int tarif);
 
     @FormUrlEncoded
     @POST("login/guru")
@@ -148,4 +166,27 @@ public interface ApiInterface {
             @Field("email") String email,
             @Field("password") String password
     );
+
+    @GET("bahan-ajar-matpel/find-by-id")
+    Call<ResponseDaftarBahanAjarJoin> getBahanAjarMatpelJoin(@Query("id") int guru_id);
+
+    @FormUrlEncoded
+    @POST("guru-jadwal/register")
+    Call<ResponseCreateJadwal> createJadwal(@Field("guru_id") int guru_id,
+                                                     @Field("hari") String hari,
+                                                     @Field("jam") String jam);
+
+    @GET("guru-jadwal/find-by-id")
+    Call<ResponseGuruJadwal> getDataJadwalByGuruId(@Query("id") int guru_id);
+
+
+    @DELETE("bahan-ajar-matpel/delete")
+    Call<ResponseLokasi> deleteMatpel(@Query("id") int id_bahan_ajar_matpel);
+
+    @DELETE("guru-jadwal/delete")
+    Call<ResponseLokasi> deleteJadwal(@Query("id") int id_jadwal);
+
+    @GET("identitas/find-by-id")
+    Call<ResponseIdentitas> getDataIdentitasByGuruId(@Query("id") int guru_id);
+
 }

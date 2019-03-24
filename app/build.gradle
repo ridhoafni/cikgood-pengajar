@@ -69,6 +69,7 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:4.7.1'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.aurelhubert:ahbottomnavigation:2.0.4'
+    implementation 'android.arch.navigation:navigation-fragment:1.0.0-rc02'
 }
 
 apply plugin: 'com.google.gms.google-services'
